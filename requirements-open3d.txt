@@ -1,0 +1,5 @@
+# Additional requirements for Python 3.8-3.12
+# Install with: pip install -r requirements-open3d.txt
+
+# Open3D for 3D point cloud processing and visualization
+open3d>=0.18.0

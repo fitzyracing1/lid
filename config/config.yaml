@@ -1,0 +1,53 @@
+# LiDAR 3D Mapping Configuration
+
+sensor:
+  # Sensor connection settings
+  port: "/dev/ttyUSB0"  # Serial port for LiDAR sensor
+  baudrate: 115200
+  timeout: 1.0
+  
+  # Scanning parameters
+  scan_rate: 10  # Hz
+  angle_range: 360  # degrees
+  angle_resolution: 1.0  # degrees
+  distance_range: 12.0  # meters
+  
+processing:
+  # Point cloud filtering
+  voxel_size: 0.05  # meters - for downsampling
+  outlier_removal:
+    nb_neighbors: 20
+    std_ratio: 2.0
+  
+  # Registration parameters
+  icp_threshold: 0.02
+  icp_max_iterations: 50
+  
+  # Noise filtering
+  min_distance: 0.15  # meters
+  max_distance: 12.0  # meters
+
+mapping:
+  # 3D reconstruction
+  resolution: 0.02  # meters
+  depth_scale: 1000.0
+  depth_trunc: 4.0
+  
+  # Map generation
+  map_size: [100, 100, 10]  # meters [x, y, z]
+  origin: [0, 0, 0]  # meters [x, y, z]
+
+visualization:
+  # Display settings
+  point_size: 2.0
+  background_color: [0, 0, 0]  # RGB
+  show_axes: true
+  window_width: 1280
+  window_height: 720
+  
+output:
+  # Save formats
+  save_raw: true
+  save_processed: true
+  format: "ply"  # Options: ply, pcd, las
+  save_path: "./output"
